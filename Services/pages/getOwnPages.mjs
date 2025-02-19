@@ -1,4 +1,4 @@
-import Page from '../Models/page.mjs'
+import Page from '../../Models/page.mjs'
 
 const getOwnPages = async (req, res) => {
     const { userId } = req.params;

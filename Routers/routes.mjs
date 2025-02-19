@@ -1,18 +1,21 @@
 import express from 'express';
 
 import healthChecker from '../Services/healthChecker.mjs'
-
-import addPage from '../Services/addPage.mjs'
-import getOwnPages from '../Services/getOwnPages.mjs'
-import getSharedPages from '../Services/getSharedPages.mjs'
-
+ 
+import addNewPage from '../Services/pages/addNewPage.mjs'
+import getOwnPages from '../Services/pages/getOwnPages.mjs'
+import getSharedPages from '../Services/pages/getSharedPages.mjs'
+import createNewUser from '../Services/users/createNewUser.mjs'
+import userLogin from '../Services/users/loginUser.mjs'
 // Create an express router
 const router = express.Router();
 
 // Use individual routes
 router.use('/healthChecker', healthChecker);
 
-router.post('/addPage', addPage);
+router.post('/addPage', addNewPage);
+router.post('/addUser', createNewUser)
+router.post('/userLogin',userLogin);
 
 router.get('/getOwnPages/:userId', getOwnPages);
 router.get('/getSharedPages/:userId', getSharedPages);

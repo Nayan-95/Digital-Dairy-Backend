@@ -7,11 +7,11 @@ const pageSchema = new mongoose.Schema({
   sharedWith: [
     {
       userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-      accessLevel: { type: String, enum: ['view', 'edit'], required: true }
+      // accessLevel: { type: String, enum: ['view', 'edit'], required: true }
     }
   ],
   createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now }
+  // updatedAt: { type: Date, default: Date.now }
 });
 
 const Page = mongoose.model('Page', pageSchema);

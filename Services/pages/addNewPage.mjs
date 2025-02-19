@@ -1,8 +1,11 @@
-import Page from '../Models/page.mjs';
+import Page from '../../Models/page.mjs';
+import date from 'date-and-time';
 
 const addPage = async (req, res) => {
     const { title, description, ownerId } = req.body;
-  
+    const now = new Date();
+    
+
     try {
       // Validate if the owner exists
       const owner = await User.findById(ownerId);
@@ -14,6 +17,7 @@ const addPage = async (req, res) => {
         description,
         ownerId,
         sharedWith: [], 
+        createdAt:date.format(now, 'ddd, MMM DD YYYY'),
       });
   
       await newPage.save();

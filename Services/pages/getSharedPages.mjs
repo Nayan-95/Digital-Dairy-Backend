@@ -1,4 +1,4 @@
-import Page from '../Models/page.mjs'
+import Page from '../../Models/page.mjs'
 const getSharedPages = async (req, res) => {
     const { userId } = req.params;
   
@@ -11,4 +11,4 @@ const getSharedPages = async (req, res) => {
     }
   };
 
-  export default getSharedPages;
+  export default getSharedPages;    
