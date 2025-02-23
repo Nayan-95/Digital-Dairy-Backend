@@ -17,7 +17,7 @@ router.post('/addPage', addNewPage);
 router.post('/addUser', createNewUser)
 router.post('/userLogin',userLogin);
 
-router.get('/getOwnPages/:userId', getOwnPages);
-router.get('/getSharedPages/:userId', getSharedPages);
+router.get('/getOwnPages', getOwnPages);
+router.get('/getSharedPages', getSharedPages);
 
 export default router;

@@ -1,7 +1,11 @@
 import Page from '../../Models/page.mjs'
 
 const getOwnPages = async (req, res) => {
-    const { userId } = req.params;
+    const token = req.headers.authorization;
+    if (!token || !token.startsWith('Bearer ')) {
+        return res.status(401).json({ message: 'Authorization token is missing or invalid' });
+    }
+    const userId = jwt.verify(token.split(' ')[1], process.env.ACCESS_SECRET_KEY).id;
 
     try {
         const pages = await Page.find({ ownerId: userId });
