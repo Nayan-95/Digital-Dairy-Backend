@@ -7,6 +7,8 @@ import getOwnPages from '../Services/pages/getOwnPages.mjs'
 import getSharedPages from '../Services/pages/getSharedPages.mjs'
 import createNewUser from '../Services/users/createNewUser.mjs'
 import userLogin from '../Services/users/loginUser.mjs'
+import uploadImage from '../Services/uploads/handleImage.mjs'
+import upload from '../middleware/upload.mjs';
 // Create an express router
 const router = express.Router();
 
@@ -16,6 +18,7 @@ router.use('/healthChecker', healthChecker);
 router.post('/addPage', addNewPage);
 router.post('/addUser', createNewUser)
 router.post('/userLogin',userLogin);
+router.post('/api/imgUpload', upload.single('image'), uploadImage);
 
 router.get('/getOwnPages', getOwnPages);
 router.get('/getSharedPages', getSharedPages);

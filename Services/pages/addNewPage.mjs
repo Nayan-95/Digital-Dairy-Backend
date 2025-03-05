@@ -4,15 +4,16 @@ import jwt from 'jsonwebtoken';
 
 const addPage = async (req, res) => {
   const { title, description } = req.body;
-  var token = req.headers.authorization;
-  if (!token || !token.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "Authorization token is missing or invalid" });
-  }
-  token = token.split(" ")[1];
+  ////var token = req.headers.authorization;
+  // if (!token || !token.startsWith("Bearer ")) {
+  //   return res.status(401).json({ message: "Authorization token is missing or invalid" });
+  // }
+  //token = token.split(" ")[1];
 
   const now = new Date();
-  const user_is = jwt.verify(token, process.env.ACCESS_SECRET_KEY);
-  const ownerId = user_is.id;
+  //const user_is = jwt.verify(token, process.env.ACCESS_SECRET_KEY);
+  //const ownerId = user_is.id;
+  const ownerId = "65fa3b2a1a3e4a6e9c0b5678";
 
   try {
     const newPage = new Page({
