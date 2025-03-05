@@ -9,6 +9,8 @@ import createNewUser from '../Services/users/createNewUser.mjs'
 import userLogin from '../Services/users/loginUser.mjs'
 import uploadImage from '../Services/uploads/handleImage.mjs'
 import upload from '../middleware/upload.mjs';
+import getImages from '../Services/uploads/getImagesByPage.mjs';
+import deleteImage from '../Services/uploads/deleteImagesByPage.mjs';
 // Create an express router
 const router = express.Router();
 
@@ -22,5 +24,7 @@ router.post('/api/imgUpload', upload.single('image'), uploadImage);
 
 router.get('/getOwnPages', getOwnPages);
 router.get('/getSharedPages', getSharedPages);
+router.get('/api/getImages/:pageId', getImages)
+router.delete('/api/deleteImage/:imageId', deleteImage);
 
 export default router;

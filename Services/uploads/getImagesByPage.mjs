@@ -1,6 +1,6 @@
 import Image from '../../models/image.mjs';
 
-const getImagesByPage = async (req, res) => {
+const getImages = async (req, res) => {
     try {
         const { pageId } = req.params;
         if (!pageId) {
@@ -8,7 +8,7 @@ const getImagesByPage = async (req, res) => {
         }
 
         // Find all images linked to this pageId
-        const images = await Image.find({ pageId });
+        const images = await Image.find({ pageId }).select('imageUrl -_id');
 
         if (images.length === 0) {
             return res.json({ message: 'No images found for this page', images: [] });
@@ -21,4 +21,4 @@ const getImagesByPage = async (req, res) => {
     }
 };
 
-export default getImagesByPage;
+export default getImages;
